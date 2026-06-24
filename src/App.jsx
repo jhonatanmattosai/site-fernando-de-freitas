@@ -143,7 +143,7 @@ const BentoGrid = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-[#0A1128]/60 to-transparent group-hover:from-black group-hover:via-black/40 transition-all duration-500"/>
               <img src={`https://www.fernandofreitascs.com.br/imagens/fundamentos/img/${item.img}`} alt={item.title} className="absolute top-6 right-6 w-16 h-16 object-contain opacity-70 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-500 drop-shadow-2xl filter brightness-0 invert z-10" />
               <h3 className="relative z-10 text-xl md:text-2xl font-bold text-white group-hover:text-accent transition-colors leading-tight drop-shadow-lg">{item.title}</h3>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

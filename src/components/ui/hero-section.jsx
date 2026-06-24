@@ -39,24 +39,24 @@ export function HeroSection() {
                             />
                         </motion.div>
 
-                        <div className="relative z-20 mx-auto flex max-w-7xl flex-col px-6 lg:block lg:px-12 w-full">
+                        <div className="relative z-20 mx-auto flex max-w-7xl flex-col px-6 lg:px-12 w-full items-center justify-center">
                             <motion.div 
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
-                                className="mx-auto max-w-lg text-center flex flex-col items-center lg:items-start lg:ml-0 lg:max-w-full lg:text-left"
+                                className="mx-auto max-w-4xl text-center flex flex-col items-center"
                             >
                                 <span className="inline-block py-1 px-3 rounded-full bg-white/20 border border-white/30 text-white text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-md shadow-lg text-center">
                                     Transformação Profunda
                                 </span>
-                                <h1 className="mt-4 max-w-3xl text-balance text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
+                                <h1 className="mt-4 max-w-4xl text-balance text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
                                     CONSCIÊNCIA SISTÊMICA
                                 </h1>
                                 <p className="mt-4 max-w-2xl text-balance text-lg md:text-xl text-gray-100 font-semibold drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
                                     Movidos a paixão e café. <span className="text-white italic">Muito café.</span>
                                 </p>
 
-                                <div className="mt-8 flex flex-col w-full sm:w-auto items-center justify-center gap-4 sm:flex-row lg:justify-start">
+                                <div className="mt-8 flex flex-col w-full sm:w-auto items-center justify-center gap-4 sm:flex-row">
                                     <Button
                                         size="lg"
                                         className="h-14 w-full sm:w-auto rounded-full pl-6 pr-4 text-lg bg-white text-black hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all">

@@ -435,9 +435,9 @@ const ModernFooter = () => {
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-                    <p>© {new Date().getFullYear()} Fernando Freitas Consciência Sistêmica.</p>
-                    <p>Marketing Digital <span className="text-white font-semibold">GS3</span></p>
+                <div className="flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm mt-16 pt-8 border-t border-white/5">
+                    <p>© 2026 Fernando Freitas CS. Todos os direitos reservados.</p>
+                    <p>Desenvolvido por <a href="https://crasto.ai" target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:text-accent transition-colors">CRASTO.AI</a></p>
                 </div>
             </div>
 

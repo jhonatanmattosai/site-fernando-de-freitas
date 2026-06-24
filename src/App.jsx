@@ -140,14 +140,14 @@ const BentoGrid = () => {
   }, { scope: containerRef });
 
   const items = [
-    { title: "Constelação", img: "ico-constelacao.png", col: "col-span-1 md:col-span-2", row: "row-span-2", bgImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" },
-    { title: "Psicossomática", img: "ico-psicossomatica.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" },
-    { title: "Neo Reichiana", img: "ico-neo-reichiana.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1520694478166-daaaaec95b69?auto=format&fit=crop&w=800&q=80" },
-    { title: "Medicina", img: "ico-medicina.png", col: "col-span-1", row: "row-span-2", bgImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" },
-    { title: "Genética", img: "ico-genetica.png", col: "col-span-1 md:col-span-2", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80" },
-    { title: "Física Quântica", img: "ico-fisica-quantica.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" },
-    { title: "Neurociência", img: "ico-neurociencia.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80" },
-    { title: "Coach", img: "ico-coach.png", col: "col-span-1 md:col-span-3", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" }
+    { title: "Constelação", icon: Network, col: "col-span-1 md:col-span-2", row: "row-span-2", bgImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" },
+    { title: "Psicossomática", icon: Activity, col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" },
+    { title: "Neo Reichiana", icon: PersonStanding, col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1520694478166-daaaaec95b69?auto=format&fit=crop&w=800&q=80" },
+    { title: "Medicina", icon: Stethoscope, col: "col-span-1", row: "row-span-2", bgImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" },
+    { title: "Genética", icon: Dna, col: "col-span-1 md:col-span-2", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80" },
+    { title: "Física Quântica", icon: Atom, col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" },
+    { title: "Neurociência", icon: Brain, col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80" },
+    { title: "Coach", icon: Target, col: "col-span-1 md:col-span-3", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" }
   ];
 
   return (
@@ -187,17 +187,19 @@ const BentoGrid = () => {
                 <p className="text-gray-600 text-lg max-w-2xl">Uma abordagem profunda que integra 8 ciências essenciais para compreender a complexidade humana.</p>
               </div>
             <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] gap-4">
-              {items.map((item, i) => (
+              {items.map((item, i) => {
+                const Icon = item.icon;
+                return (
                 <div 
                   key={i} 
                   className={`reveal-up group relative rounded-3xl overflow-hidden bg-black/5 border border-black/10 p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
                 >
                   <img src={item.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-all duration-500"/>
-                  <img src={`https://www.fernandofreitascs.com.br/imagens/fundamentos/img/${item.img}`} alt={item.title} className="absolute top-6 right-6 w-16 h-16 object-contain opacity-90 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-500 drop-shadow-2xl filter brightness-0 invert z-10" />
+                  <Icon className="absolute top-6 right-6 w-10 h-10 text-white/90 group-hover:text-white group-hover:-translate-y-2 transition-all duration-500 drop-shadow-2xl z-10" strokeWidth={1.5} />
                   <h3 className="relative z-10 text-xl md:text-2xl font-bold text-white transition-colors leading-tight drop-shadow-lg">{item.title}</h3>
                 </div>
-              ))}
+              )})}
             </div>
           </div>
        </div>

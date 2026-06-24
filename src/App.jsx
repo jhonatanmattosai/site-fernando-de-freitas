@@ -115,13 +115,52 @@ const HeroModern = () => {
 
 const BentoGrid = () => {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useGSAP(() => {
+    // Revelação dos blocos
+    gsap.utils.toArray('.reveal-up').forEach((elem) => {
+      gsap.fromTo(elem, 
+        { y: 50, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 1, 
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: elem,
+            start: "top 85%",
+          }
+        }
+      );
+    });
+
+    gsap.fromTo(".reveal-left",
+        { x: -50, opacity: 0 },
+        {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".reveal-left",
+                start: "top 80%"
+            }
+        }
+    );
+
+    // EFEITO DE MERGULHO NA PALAVRA (ZOOM INFINITO)
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=2000",
+        end: "+=150%",
         scrub: 1,
         pin: true,
       }
@@ -156,13 +195,13 @@ const BentoGrid = () => {
        {/* Overlay em SVG (Perfeito recorte de buraco sem mix-blend-mode) */}
        <div className="absolute inset-0 z-50 pointer-events-none">
           <div className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
-             <div className="bento-svg-wrapper w-full h-full flex items-center justify-center" style={{ transformOrigin: 'center center', willChange: 'transform' }}>
+             <div className="bento-svg-wrapper w-full h-full flex items-center justify-center" style={{ transformOrigin: isMobile ? 'center 25%' : 'center center', willChange: 'transform' }}>
                <svg className="w-full h-full">
                  <defs>
                    <mask id="hole-mask">
                      <rect width="100%" height="100%" fill="white" />
                      <text 
-                       x="50%" y="50%" 
+                       x="50%" y={isMobile ? "25%" : "50%"} 
                        textAnchor="middle" 
                        dominantBaseline="middle" 
                        fill="black" 

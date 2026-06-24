@@ -302,14 +302,14 @@ const CoursesCircular = () => {
 
   return (
     <div className="w-full text-white overflow-hidden relative">
-      <div className="w-full relative h-[450px] md:h-[1000px] flex flex-col items-center justify-start overflow-hidden pt-12 md:pt-20">
+      <div className="w-full relative h-[550px] md:h-[1000px] flex flex-col items-center justify-start overflow-hidden pt-12 md:pt-20">
         
-        <div className="text-center relative md:absolute md:top-16 z-10 w-full px-4 pointer-events-none reveal-up mb-8 md:mb-0">
+        <div className="text-center relative md:absolute md:top-16 z-10 w-full px-4 pointer-events-none reveal-up mb-16 md:mb-0">
           <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-2 md:mb-4">CATÁLOGO EXCLUSIVO</h2>
           <p className="text-gray-400 text-sm md:text-lg max-w-xl mx-auto">Role a página ou aguarde a rotação 3D para explorar os cursos projetados para curar, ensinar e transformar realidades.</p>
         </div>
 
-        <div className="w-full h-full md:mt-32 relative">
+        <div className="w-full h-full mt-4 md:mt-32 relative">
           <CircularGallery items={courses} radius={650} autoRotateSpeed={0.15} />
         </div>
       </div>
@@ -328,14 +328,14 @@ const SomosHumanosAccordion = () => {
     const [active, setActive] = useState(1); // Default to Fernando
 
     return (
-        <div className="py-32 relative">
+        <div className="pt-12 pb-20 md:py-32 relative">
             {/* Background texture */}
             <div className="absolute inset-0 opacity-5 bg-[url('https://www.fernandofreitascs.com.br/imagens/bg-teia.png')] bg-repeat" />
             
             <div className="max-w-7xl mx-auto px-4 relative z-10">
-                <div className="text-center mb-16 reveal-up">
-                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">SOMOS HUMANOS</h2>
-                    <p className="text-accent text-lg font-medium tracking-wide uppercase">As mentes por trás do método</p>
+                <div className="text-center mb-10 md:mb-16 reveal-up">
+                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-2 md:mb-4">SOMOS HUMANOS</h2>
+                    <p className="text-accent text-sm md:text-lg font-medium tracking-wide uppercase">As mentes por trás do método</p>
                 </div>
 
                 <div className="flex flex-col md:flex-row h-[600px] w-full gap-2 md:gap-4 overflow-hidden rounded-3xl">
@@ -390,11 +390,11 @@ const BlogCreative = () => {
     ];
 
     return (
-        <div className="py-32 relative">
+        <div className="pt-12 pb-20 md:py-32 relative">
              <div className="max-w-7xl mx-auto px-4">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal-left">
-                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">PENSAMENTOS <br/><span className="text-gray-600">&</span> REFLEXÕES</h2>
-                    <button className="px-6 py-3 rounded-full border border-white/20 text-white font-semibold hover:bg-white hover:text-black transition-colors">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 gap-6 md:gap-8 reveal-left text-center md:text-left">
+                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">PENSAMENTOS <br className="hidden md:block"/><span className="text-gray-600">&</span> REFLEXÕES</h2>
+                    <button className="px-6 py-3 rounded-full border border-white/20 text-white font-semibold hover:bg-white hover:text-black transition-colors w-full sm:w-auto">
                         Acessar o Blog Completo
                     </button>
                 </div>
@@ -476,7 +476,7 @@ const ModernFooter = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm mt-16 pt-8 border-t border-white/5">
+                <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left text-gray-500 text-sm mt-16 pt-8 border-t border-white/5 gap-4 md:gap-0">
                     <p>© 2026 Fernando Freitas CS. Todos os direitos reservados.</p>
                     <p>Desenvolvido por <a href="https://crasto.ai" target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:text-accent transition-colors">CRASTO.AI</a></p>
                 </div>

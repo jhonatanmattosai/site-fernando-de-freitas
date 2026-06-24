@@ -127,27 +127,16 @@ const BentoGrid = () => {
       }
     });
 
-    // Começa com a máscara ocupando 100vw e invisível
-    tl.fromTo(".masked-bento", 
-      { 
-        WebkitMaskSize: "20vw", 
-        maskSize: "20vw",
-        opacity: 0
-      }, 
-      { 
-        WebkitMaskSize: "100vw", 
-        maskSize: "100vw",
-        opacity: 1,
-        duration: 0.2 
-      }
+    // O zoom do texto (limite seguro de GPU para evitar congelamento de textura)
+    tl.fromTo(".bento-mask-text", 
+      { scale: 1 },
+      { scale: 40, duration: 0.8, ease: "power2.in" }
     )
-    // O zoom explode a máscara
-    .to(".masked-bento", {
-      WebkitMaskSize: "15000vw",
-      maskSize: "15000vw",
-      duration: 0.8,
-      ease: "power2.inOut"
-    });
+    // Faz o overlay desaparecer suavemente quando o texto já está gigante
+    .to(".bento-mask-overlay", {
+      opacity: 0,
+      duration: 0.2
+    }, "-=0.2");
   }, { scope: containerRef });
 
   const items = [
@@ -162,20 +151,22 @@ const BentoGrid = () => {
   ];
 
   return (
-    <div ref={containerRef} className="relative w-full min-h-screen bg-transparent">
-       {/* Conteúdo Revelado (Fundo Branco) com Mask Image */}
+    <div ref={containerRef} className="relative w-full bg-white overflow-hidden">
+       {/* Overlay com a Palavra CONSCIÊNCIA */}
        <div 
-         className="masked-bento w-full bg-white text-black min-h-screen"
-         style={{ 
-           WebkitMaskImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 200'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-family='system-ui, -apple-system, sans-serif' font-weight='900' font-size='150px' fill='black'%3ECONSCIÊNCIA%3C/text%3E%3C/svg%3E")`, 
-           maskImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 200'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-family='system-ui, -apple-system, sans-serif' font-weight='900' font-size='150px' fill='black'%3ECONSCIÊNCIA%3C/text%3E%3C/svg%3E")`,
-           WebkitMaskPosition: 'center 40vh',
-           maskPosition: 'center 40vh',
-           WebkitMaskRepeat: 'no-repeat',
-           maskRepeat: 'no-repeat',
-         }}
+         className="bento-mask-overlay absolute inset-0 z-50 flex items-center justify-center bg-[#02050A] pointer-events-none"
+         style={{ mixBlendMode: 'multiply' }}
        >
-         <div id="bento-content" className="relative z-0 min-h-screen flex flex-col justify-center py-32">
+         <h1 
+           className="bento-mask-text text-white font-black tracking-tighter whitespace-nowrap text-center select-none"
+           style={{ fontSize: '15vw', transformOrigin: 'center center', willChange: 'transform' }}
+         >
+           CONSCIÊNCIA
+         </h1>
+       </div>
+
+       {/* Conteúdo do Bento Grid (Fundo Branco) */}
+       <div id="bento-content" className="relative z-0 min-h-screen flex flex-col justify-center py-32">
             <div className="max-w-7xl mx-auto px-4 relative z-10 w-full mt-20">
               <div className="mb-20 reveal-left">
                 <h2 className="text-4xl md:text-5xl font-black text-black tracking-tight mb-4">A FUNDAÇÃO</h2>

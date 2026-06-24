@@ -126,27 +126,44 @@ const BentoGrid = () => {
   ];
 
   return (
-    <div className="py-32 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="mb-20 reveal-left">
-          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">A FUNDAÇÃO</h2>
-          <p className="text-gray-400 text-lg max-w-2xl">Uma abordagem profunda que integra 8 ciências essenciais para compreender a complexidade humana.</p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] gap-4">
-          {items.map((item, i) => (
-            <div 
-              key={i} 
-              className={`reveal-up group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
-            >
-              <img src={item.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-[#0A1128]/60 to-transparent group-hover:from-black group-hover:via-black/40 transition-all duration-500"/>
-              <img src={`https://www.fernandofreitascs.com.br/imagens/fundamentos/img/${item.img}`} alt={item.title} className="absolute top-6 right-6 w-16 h-16 object-contain opacity-70 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-500 drop-shadow-2xl filter brightness-0 invert z-10" />
-              <h3 className="relative z-10 text-xl md:text-2xl font-bold text-white group-hover:text-accent transition-colors leading-tight drop-shadow-lg">{item.title}</h3>
+    <div id="bento-transition-wrapper" className="relative w-full overflow-hidden bg-[#02050A]">
+       
+       <div id="bento-content" className="relative z-0 min-h-screen flex flex-col justify-center py-32">
+          <div className="max-w-7xl mx-auto px-4 relative z-10 w-full">
+            <div className="mb-20 reveal-left">
+              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">A FUNDAÇÃO</h2>
+              <p className="text-gray-400 text-lg max-w-2xl">Uma abordagem profunda que integra 8 ciências essenciais para compreender a complexidade humana.</p>
             </div>
-          ))}
-        </div>
-      </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] gap-4">
+              {items.map((item, i) => (
+                <div 
+                  key={i} 
+                  className={`reveal-up group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
+                >
+                  <img src={item.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-[#0A1128]/60 to-transparent group-hover:from-black group-hover:via-black/40 transition-all duration-500"/>
+                  <img src={`https://www.fernandofreitascs.com.br/imagens/fundamentos/img/${item.img}`} alt={item.title} className="absolute top-6 right-6 w-16 h-16 object-contain opacity-70 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-500 drop-shadow-2xl filter brightness-0 invert z-10" />
+                  <h3 className="relative z-10 text-xl md:text-2xl font-bold text-white group-hover:text-accent transition-colors leading-tight drop-shadow-lg">{item.title}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
+       </div>
+
+       {/* The Masking Overlay */}
+       <div 
+         id="bento-mask-overlay"
+         className="absolute inset-0 z-50 flex items-center justify-center bg-black pointer-events-none"
+         style={{ mixBlendMode: 'multiply' }}
+       >
+          <h1 
+             id="bento-mask-text"
+             className="text-white font-black tracking-tighter whitespace-nowrap text-center"
+             style={{ fontSize: '15vw', transformOrigin: 'center center' }}
+          >
+             CONSCIÊNCIA
+          </h1>
+       </div>
     </div>
   );
 };
@@ -425,6 +442,31 @@ export default function App() {
         { x: 0, opacity: 1, filter: 'blur(0px)', duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
       );
     });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#bento-transition-wrapper",
+        start: "top top",
+        end: "+=2000",
+        scrub: 1,
+        pin: true,
+      }
+    });
+
+    tl.fromTo("#bento-mask-text", 
+      { scale: 0.1, opacity: 0, y: 100 }, 
+      { scale: 1, opacity: 1, y: 0, duration: 0.2 }
+    )
+    .to("#bento-mask-text", {
+      scale: 150,
+      duration: 0.8,
+      ease: "power2.in"
+    })
+    .to("#bento-mask-overlay", {
+      opacity: 0,
+      duration: 0.1
+    });
+
   });
 
   return (

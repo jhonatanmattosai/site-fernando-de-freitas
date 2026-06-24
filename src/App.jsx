@@ -127,22 +127,26 @@ const BentoGrid = () => {
       }
     });
 
-    // O texto surge pequeno
-    tl.fromTo(".bento-mask-text", 
-      { scale: 0.2, opacity: 0, transformOrigin: "50% 50%" }, 
-      { scale: 1, opacity: 1, duration: 0.2 }
+    // Começa com a máscara ocupando 100vw e invisível
+    tl.fromTo(".masked-bento", 
+      { 
+        WebkitMaskSize: "20vw", 
+        maskSize: "20vw",
+        opacity: 0
+      }, 
+      { 
+        WebkitMaskSize: "100vw", 
+        maskSize: "100vw",
+        opacity: 1,
+        duration: 0.2 
+      }
     )
-    // Cresce massivamente
-    .to(".bento-mask-text", {
-      scale: 150,
+    // O zoom explode a máscara
+    .to(".masked-bento", {
+      WebkitMaskSize: "15000vw",
+      maskSize: "15000vw",
       duration: 0.8,
-      ease: "power2.in",
-      transformOrigin: "50% 50%"
-    })
-    // Ao terminar o zoom, a máscara se torna 100% branca (revelando toda a sessão)
-    .to(".mask-bg-rect", {
-      fill: "white",
-      duration: 0.1
+      ease: "power2.inOut"
     });
   }, { scope: containerRef });
 
@@ -158,33 +162,17 @@ const BentoGrid = () => {
   ];
 
   return (
-    <div ref={containerRef} className="relative w-full">
-       
-       {/* SVG Mask Definition */}
-       <svg className="absolute top-0 left-0 w-full h-screen pointer-events-none z-[-1]">
-         <defs>
-           <mask id="text-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
-             <rect width="100%" height="100%" fill="black" className="mask-bg-rect" />
-             <text 
-               className="bento-mask-text font-black tracking-tighter"
-               x="50%" y="50%" 
-               textAnchor="middle" 
-               dominantBaseline="middle" 
-               fill="white" 
-               style={{ fontSize: '15vw' }}
-             >
-               CONSCIÊNCIA
-             </text>
-           </mask>
-         </defs>
-       </svg>
-
-       {/* Conteúdo Revelado (Fundo Branco) */}
+    <div ref={containerRef} className="relative w-full min-h-screen bg-transparent">
+       {/* Conteúdo Revelado (Fundo Branco) com Mask Image */}
        <div 
-         className="w-full bg-white text-black"
+         className="masked-bento w-full bg-white text-black min-h-screen"
          style={{ 
-           WebkitMaskImage: 'url(#text-mask)', 
-           maskImage: 'url(#text-mask)'
+           WebkitMaskImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 200'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-family='system-ui, -apple-system, sans-serif' font-weight='900' font-size='150px' fill='black'%3ECONSCIÊNCIA%3C/text%3E%3C/svg%3E")`, 
+           maskImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 200'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-family='system-ui, -apple-system, sans-serif' font-weight='900' font-size='150px' fill='black'%3ECONSCIÊNCIA%3C/text%3E%3C/svg%3E")`,
+           WebkitMaskPosition: 'center 40vh',
+           maskPosition: 'center 40vh',
+           WebkitMaskRepeat: 'no-repeat',
+           maskRepeat: 'no-repeat',
          }}
        >
          <div id="bento-content" className="relative z-0 min-h-screen flex flex-col justify-center py-32">

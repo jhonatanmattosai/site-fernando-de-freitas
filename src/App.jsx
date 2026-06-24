@@ -127,13 +127,13 @@ const BentoGrid = () => {
       }
     });
 
-    // O zoom do texto (limite seguro de GPU para evitar congelamento de textura)
-    tl.fromTo(".bento-mask-text", 
+    // O zoom do texto escalando o SVG inteiro
+    tl.fromTo(".bento-svg-overlay", 
       { scale: 1 },
       { scale: 40, duration: 0.8, ease: "power2.in" }
     )
     // Faz o overlay desaparecer suavemente quando o texto já está gigante
-    .to(".bento-mask-overlay", {
+    .to(".bento-svg-overlay", {
       opacity: 0,
       duration: 0.2
     }, "-=0.2");
@@ -152,17 +152,32 @@ const BentoGrid = () => {
 
   return (
     <div ref={containerRef} className="relative w-full bg-white overflow-hidden">
-       {/* Overlay com a Palavra CONSCIÊNCIA */}
-       <div 
-         className="bento-mask-overlay absolute inset-0 z-50 flex items-center justify-center bg-[#02050A] pointer-events-none"
-         style={{ mixBlendMode: 'multiply' }}
-       >
-         <h1 
-           className="bento-mask-text text-white font-black tracking-tighter whitespace-nowrap text-center select-none"
-           style={{ fontSize: '15vw', transformOrigin: 'center center', willChange: 'transform' }}
-         >
-           CONSCIÊNCIA
-         </h1>
+       
+       {/* Overlay em SVG (Perfeito recorte de buraco sem mix-blend-mode) */}
+       <div className="absolute inset-0 z-50 pointer-events-none">
+          <div className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
+             <svg 
+               className="bento-svg-overlay w-full h-full" 
+               style={{ transformOrigin: 'center center', willChange: 'transform' }}
+             >
+               <defs>
+                 <mask id="hole-mask">
+                   <rect width="100%" height="100%" fill="white" />
+                   <text 
+                     x="50%" y="50%" 
+                     textAnchor="middle" 
+                     dominantBaseline="middle" 
+                     fill="black" 
+                     className="font-black tracking-tighter"
+                     style={{ fontSize: '15vw' }}
+                   >
+                     CONSCIÊNCIA
+                   </text>
+                 </mask>
+               </defs>
+               <rect width="100%" height="100%" fill="#02050A" mask="url(#hole-mask)" />
+             </svg>
+          </div>
        </div>
 
        {/* Conteúdo do Bento Grid (Fundo Branco) */}

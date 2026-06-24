@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, X, Phone, User, PlayCircle, Calendar, ArrowRight, MapPin, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Menu, X, Phone, User, PlayCircle, Calendar, ArrowRight, MapPin, Mail, ChevronRight, ChevronLeft, Network, Activity, PersonStanding, Stethoscope, Dna, Atom, Brain, Target } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

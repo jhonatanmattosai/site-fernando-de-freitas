@@ -128,21 +128,16 @@ const BentoGrid = () => {
   return (
     <div className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="mb-20">
+        <div className="mb-20 reveal-left">
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">A FUNDAÇÃO</h2>
           <p className="text-gray-400 text-lg max-w-2xl">Uma abordagem profunda que integra 8 ciências essenciais para compreender a complexidade humana.</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] gap-4">
           {items.map((item, i) => (
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.05 }}
-              whileHover={{ scale: 0.98 }}
+            <div 
               key={i} 
-              className={`group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
+              className={`reveal-up group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
             >
               <img src={item.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-[#0A1128]/60 to-transparent group-hover:from-black group-hover:via-black/40 transition-all duration-500"/>
@@ -214,7 +209,7 @@ const CoursesCircular = () => {
     <div className="w-full text-white overflow-hidden relative">
       <div className="w-full relative h-[800px] md:h-[1000px] flex flex-col items-center justify-center overflow-hidden py-20">
         
-        <div className="text-center absolute top-16 z-10 w-full px-4 pointer-events-none">
+        <div className="text-center absolute top-16 z-10 w-full px-4 pointer-events-none reveal-up">
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">CATÁLOGO EXCLUSIVO</h2>
           <p className="text-gray-400 text-lg max-w-xl mx-auto">Role a página ou aguarde a rotação 3D para explorar os cursos projetados para curar, ensinar e transformar realidades.</p>
         </div>
@@ -243,7 +238,7 @@ const SomosHumanosAccordion = () => {
             <div className="absolute inset-0 opacity-5 bg-[url('https://www.fernandofreitascs.com.br/imagens/bg-teia.png')] bg-repeat" />
             
             <div className="max-w-7xl mx-auto px-4 relative z-10">
-                <div className="text-center mb-16">
+                <div className="text-center mb-16 reveal-up">
                     <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">SOMOS HUMANOS</h2>
                     <p className="text-accent text-lg font-medium tracking-wide uppercase">As mentes por trás do método</p>
                 </div>
@@ -302,7 +297,7 @@ const BlogCreative = () => {
     return (
         <div className="py-32 relative">
              <div className="max-w-7xl mx-auto px-4">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal-left">
                     <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">PENSAMENTOS <br/><span className="text-gray-600">&</span> REFLEXÕES</h2>
                     <button className="px-6 py-3 rounded-full border border-white/20 text-white font-semibold hover:bg-white hover:text-black transition-colors">
                         Acessar o Blog Completo
@@ -311,9 +306,8 @@ const BlogCreative = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {posts.map((post, i) => (
-                        <motion.div 
-                            initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.1 }}
-                            key={i} className="group relative"
+                        <div 
+                            key={i} className="group relative reveal-up"
                         >
                             <div className="relative h-80 rounded-3xl overflow-hidden mb-6">
                                 <img src={`https://www.fernandofreitascs.com.br/imagens/blog/img/${post.img}`} alt={post.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
@@ -327,7 +321,7 @@ const BlogCreative = () => {
                                 {post.title}
                             </h3>
                             <div className="w-12 h-1 bg-white/20 mt-6 group-hover:w-full group-hover:bg-accent transition-all duration-500" />
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
              </div>
@@ -342,7 +336,7 @@ const ModernFooter = () => {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
             
             <div className="max-w-7xl mx-auto px-4">
-                <div className="bg-gradient-to-r from-accent to-[#b37042] rounded-3xl p-10 md:p-16 mb-20 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+                <div className="bg-gradient-to-r from-accent to-[#b37042] rounded-3xl p-10 md:p-16 mb-20 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden reveal-up">
                     <div className="absolute inset-0 bg-[url('https://www.fernandofreitascs.com.br/imagens/bg-teia.png')] opacity-10 mix-blend-overlay" />
                     <h2 className="text-3xl md:text-4xl font-black text-white leading-tight max-w-2xl relative z-10">
                         Seja um licenciado e leve a Consciência Sistêmica para a sua cidade!
@@ -354,9 +348,8 @@ const ModernFooter = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 relative z-10">
                     <div className="col-span-1 md:col-span-2">
-                        <div className="flex items-center gap-3 mb-6">
-                            <span className="w-10 h-10 rounded-xl bg-accent text-white flex items-center justify-center font-black text-xl">FF</span>
-                            <span className="font-bold text-xl tracking-tight">Consciência Sistêmica</span>
+                        <div className="mb-6">
+                            <img src="https://www.fernandofreitascs.com.br/imagens/fernando-freitas-logo.png" alt="Fernando Freitas Consciência Sistêmica" className="h-16 md:h-20 object-contain" />
                         </div>
                         <p className="text-gray-400 max-w-sm mb-8 leading-relaxed">
                             Integrando Terapia Sistêmica, Psicoterapia Corporal, Análise Psicossomática e Coaching para uma transformação integral.
@@ -411,6 +404,29 @@ const ModernFooter = () => {
 };
 
 export default function App() {
+  useGSAP(() => {
+    gsap.utils.toArray('.reveal-up').forEach((elem) => {
+      gsap.fromTo(elem, 
+        { y: 80, opacity: 0, filter: 'blur(15px)' }, 
+        { y: 0, opacity: 1, filter: 'blur(0px)', duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
+      );
+    });
+
+    gsap.utils.toArray('.reveal-left').forEach((elem) => {
+      gsap.fromTo(elem, 
+        { x: -80, opacity: 0, filter: 'blur(15px)' }, 
+        { x: 0, opacity: 1, filter: 'blur(0px)', duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
+      );
+    });
+
+    gsap.utils.toArray('.reveal-right').forEach((elem) => {
+      gsap.fromTo(elem, 
+        { x: 80, opacity: 0, filter: 'blur(15px)' }, 
+        { x: 0, opacity: 1, filter: 'blur(0px)', duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
+      );
+    });
+  });
+
   return (
     <div className="min-h-screen bg-[#02050A] font-sans selection:bg-accent selection:text-white relative overflow-hidden">
       {/* GLOBAL FLUID BACKGROUND */}

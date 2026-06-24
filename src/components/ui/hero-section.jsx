@@ -116,8 +116,7 @@ export function HeroSection() {
 
                                 </InfiniteSlider>
 
-                                <div className="bg-gradient-to-r from-[#0A1128] absolute inset-y-0 left-0 w-20 z-10"></div>
-                                <div className="bg-gradient-to-l from-[#0A1128] absolute inset-y-0 right-0 w-20 z-10"></div>
+
                             </div>
                         </div>
                     </div>

@@ -263,15 +263,15 @@ const CoursesCircular = () => {
 
   return (
     <div className="w-full text-white overflow-hidden relative">
-      <div className="w-full relative h-[500px] md:h-[1000px] flex flex-col items-center justify-center overflow-hidden py-10 md:py-20">
+      <div className="w-full relative h-[450px] md:h-[1000px] flex flex-col items-center justify-start overflow-hidden pt-12 md:pt-20">
         
-        <div className="text-center absolute top-8 md:top-16 z-10 w-full px-4 pointer-events-none reveal-up">
-          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">CATÁLOGO EXCLUSIVO</h2>
-          <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto">Role a página ou aguarde a rotação 3D para explorar os cursos projetados para curar, ensinar e transformar realidades.</p>
+        <div className="text-center relative md:absolute md:top-16 z-10 w-full px-4 pointer-events-none reveal-up mb-8 md:mb-0">
+          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-2 md:mb-4">CATÁLOGO EXCLUSIVO</h2>
+          <p className="text-gray-400 text-sm md:text-lg max-w-xl mx-auto">Role a página ou aguarde a rotação 3D para explorar os cursos projetados para curar, ensinar e transformar realidades.</p>
         </div>
 
-        <div className="w-full h-full mt-24 md:mt-32">
-          <CircularGallery items={courses} radius={window.innerWidth < 768 ? 300 : 650} autoRotateSpeed={0.15} />
+        <div className="w-full h-full md:mt-32 relative">
+          <CircularGallery items={courses} radius={window.innerWidth < 768 ? 200 : 650} autoRotateSpeed={0.15} />
         </div>
       </div>
     </div>
@@ -504,12 +504,12 @@ export default function App() {
         <CoursesCircular />
         
         {/* Soft edge transition TO BentoGrid */}
-        <div className="w-full h-48 bg-gradient-to-b from-transparent to-[#02050A] -mb-1 relative z-20 pointer-events-none" />
+        <div className="w-full h-12 md:h-48 bg-gradient-to-b from-transparent to-[#02050A] -mb-1 relative z-20 pointer-events-none" />
         
         <BentoGrid />
         
         {/* Soft edge transition FROM BentoGrid */}
-        <div className="w-full h-48 bg-gradient-to-t from-transparent to-[#02050A] relative z-20 pointer-events-none" />
+        <div className="w-full h-24 md:h-48 bg-gradient-to-t from-transparent to-[#02050A] relative z-20 pointer-events-none" />
 
         <SomosHumanosAccordion />
         <BlogCreative />

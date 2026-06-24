@@ -114,19 +114,47 @@ const HeroModern = () => {
 };
 
 const BentoGrid = () => {
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "+=2000",
+        scrub: 1,
+        pin: true,
+      }
+    });
+
+    tl.fromTo(".bento-mask-text", 
+      { scale: 0.1, opacity: 0, y: 100 }, 
+      { scale: 1, opacity: 1, y: 0, duration: 0.2 }
+    )
+    .to(".bento-mask-text", {
+      scale: 150,
+      duration: 0.8,
+      ease: "power2.in"
+    })
+    .to(".bento-mask-overlay", {
+      opacity: 0,
+      duration: 0.1
+    });
+  }, { scope: containerRef });
+
   const items = [
-    { title: "Constelação Sistêmica", img: "ico-const.png", col: "col-span-1 md:col-span-2", row: "row-span-2", bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" },
-    { title: "Psicossomática", img: "psicossomatica-icon.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=80" },
-    { title: "Neo Reichiana", img: "ico-psico.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" },
-    { title: "Medicina", img: "ico-medicina.png", col: "col-span-1 md:col-span-2", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80" },
-    { title: "Genética", img: "ico-genetica.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80" },
-    { title: "Física Quântica", img: "ico-fisica.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" },
-    { title: "Neurociência", img: "ico-neuro.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80" },
+    { title: "Constelação", img: "ico-constelacao.png", col: "col-span-1 md:col-span-2", row: "row-span-2", bgImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" },
+    { title: "Psicossomática", img: "ico-psicossomatica.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" },
+    { title: "Neo Reichiana", img: "ico-neo-reichiana.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1520694478166-daaaaec95b69?auto=format&fit=crop&w=800&q=80" },
+    { title: "Medicina", img: "ico-medicina.png", col: "col-span-1", row: "row-span-2", bgImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" },
+    { title: "Genética", img: "ico-genetica.png", col: "col-span-1 md:col-span-2", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80" },
+    { title: "Física Quântica", img: "ico-fisica-quantica.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" },
+    { title: "Neurociência", img: "ico-neurociencia.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80" },
     { title: "Coach", img: "ico-coach.png", col: "col-span-1 md:col-span-3", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" }
   ];
 
   return (
-    <div id="bento-transition-wrapper" className="relative w-full overflow-hidden bg-[#02050A]">
+    <div ref={containerRef} className="relative w-full overflow-hidden bg-[#02050A]">
        
        <div id="bento-content" className="relative z-0 min-h-screen flex flex-col justify-center py-32">
           <div className="max-w-7xl mx-auto px-4 relative z-10 w-full">
@@ -152,13 +180,11 @@ const BentoGrid = () => {
 
        {/* The Masking Overlay */}
        <div 
-         id="bento-mask-overlay"
-         className="absolute inset-0 z-50 flex items-center justify-center bg-black pointer-events-none"
+         className="bento-mask-overlay absolute inset-0 z-50 flex items-center justify-center bg-black pointer-events-none"
          style={{ mixBlendMode: 'multiply' }}
        >
           <h1 
-             id="bento-mask-text"
-             className="text-white font-black tracking-tighter whitespace-nowrap text-center"
+             className="bento-mask-text text-white font-black tracking-tighter whitespace-nowrap text-center"
              style={{ fontSize: '15vw', transformOrigin: 'center center' }}
           >
              CONSCIÊNCIA
@@ -443,34 +469,10 @@ export default function App() {
       );
     });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#bento-transition-wrapper",
-        start: "top top",
-        end: "+=2000",
-        scrub: 1,
-        pin: true,
-      }
-    });
-
-    tl.fromTo("#bento-mask-text", 
-      { scale: 0.1, opacity: 0, y: 100 }, 
-      { scale: 1, opacity: 1, y: 0, duration: 0.2 }
-    )
-    .to("#bento-mask-text", {
-      scale: 150,
-      duration: 0.8,
-      ease: "power2.in"
-    })
-    .to("#bento-mask-overlay", {
-      opacity: 0,
-      duration: 0.1
-    });
-
   });
 
   return (
-    <div className="min-h-screen bg-[#02050A] font-sans selection:bg-accent selection:text-white relative overflow-hidden">
+    <div className="min-h-screen bg-[#02050A] font-sans selection:bg-accent selection:text-white relative overflow-clip">
       {/* GLOBAL FLUID BACKGROUND */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060D20] via-[#02050A] to-[#060D20]" />

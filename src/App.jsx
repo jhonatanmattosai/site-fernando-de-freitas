@@ -187,7 +187,6 @@ const BentoGrid = () => {
             </div>
           </div>
        </div>
-     </div>
     </div>
   );
 };

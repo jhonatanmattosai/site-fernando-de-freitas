@@ -12,7 +12,7 @@ export function HeroSection() {
             <HeroHeader />
             <main className="overflow-x-hidden">
                 {/* Container that takes exactly 100vh to fit the screen perfectly without scrolling */}
-                <div className="h-screen w-full flex flex-col pt-24 pb-4">
+                <div className="h-screen w-full flex flex-col pt-16 md:pt-24 pb-4">
                     <section className="flex-1 relative flex flex-col justify-center min-h-0">
                         {/* Image Background Box constrained to the parent section */}
                         <motion.div 
@@ -44,9 +44,9 @@ export function HeroSection() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
-                                className="mx-auto max-w-lg text-center lg:ml-0 lg:max-w-full lg:text-left"
+                                className="mx-auto max-w-lg text-center flex flex-col items-center lg:items-start lg:ml-0 lg:max-w-full lg:text-left"
                             >
-                                <span className="inline-block py-1 px-3 rounded-full bg-white/20 border border-white/30 text-white text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-md shadow-lg">
+                                <span className="inline-block py-1 px-3 rounded-full bg-white/20 border border-white/30 text-white text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-md shadow-lg text-center">
                                     Transformação Profunda
                                 </span>
                                 <h1 className="mt-4 max-w-3xl text-balance text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
@@ -56,11 +56,11 @@ export function HeroSection() {
                                     Movidos a paixão e café. <span className="text-white italic">Muito café.</span>
                                 </p>
 
-                                <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+                                <div className="mt-8 flex flex-col w-full sm:w-auto items-center justify-center gap-4 sm:flex-row lg:justify-start">
                                     <Button
                                         size="lg"
-                                        className="h-14 rounded-full pl-6 pr-4 text-lg bg-white text-black hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all">
-                                        <a href="#cursos" className="flex items-center">
+                                        className="h-14 w-full sm:w-auto rounded-full pl-6 pr-4 text-lg bg-white text-black hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all">
+                                        <a href="#cursos" className="flex items-center justify-center w-full">
                                             <span className="text-nowrap font-bold">Descubra os Cursos</span>
                                             <ChevronRight className="ml-2 w-5 h-5" />
                                         </a>
@@ -68,8 +68,8 @@ export function HeroSection() {
                                     <Button
                                         size="lg"
                                         variant="ghost"
-                                        className="h-14 rounded-full px-6 text-lg border-2 border-white/30 bg-black/40 hover:bg-white/20 text-white font-bold backdrop-blur-md transition-all">
-                                        <a href="#about" className="flex items-center">
+                                        className="h-14 w-full sm:w-auto rounded-full px-6 text-lg border-2 border-white/30 bg-black/40 hover:bg-white/20 text-white font-bold backdrop-blur-md transition-all">
+                                        <a href="#about" className="flex items-center justify-center w-full">
                                             <span className="text-nowrap">O que é?</span>
                                         </a>
                                     </Button>

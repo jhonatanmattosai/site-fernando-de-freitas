@@ -502,22 +502,22 @@ export default function App() {
   useGSAP(() => {
     gsap.utils.toArray('.reveal-up').forEach((elem) => {
       gsap.fromTo(elem, 
-        { y: 80, opacity: 0, filter: 'blur(15px)' }, 
-        { y: 0, opacity: 1, filter: 'blur(0px)', duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
+        { y: 80, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
       );
     });
 
     gsap.utils.toArray('.reveal-left').forEach((elem) => {
       gsap.fromTo(elem, 
-        { x: -80, opacity: 0, filter: 'blur(15px)' }, 
-        { x: 0, opacity: 1, filter: 'blur(0px)', duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
+        { x: -80, opacity: 0 }, 
+        { x: 0, opacity: 1, duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
       );
     });
 
     gsap.utils.toArray('.reveal-right').forEach((elem) => {
       gsap.fromTo(elem, 
-        { x: 80, opacity: 0, filter: 'blur(15px)' }, 
-        { x: 0, opacity: 1, filter: 'blur(0px)', duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
+        { x: 80, opacity: 0 }, 
+        { x: 0, opacity: 1, duration: 1, scrollTrigger: { trigger: elem, start: 'top 95%', end: 'top 60%', scrub: 1 } }
       );
     });
 
@@ -529,13 +529,13 @@ export default function App() {
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060D20] via-[#02050A] to-[#060D20]" />
         
-        {/* Creative ambient glows */}
-        <div className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute top-[40%] right-[0%] w-[40vw] h-[40vw] bg-accent/5 rounded-full blur-[150px] mix-blend-screen" />
-        <div className="absolute bottom-[0%] -left-[10%] w-[40vw] h-[40vw] bg-purple-900/10 rounded-full blur-[130px] mix-blend-screen animate-pulse" style={{ animationDuration: '12s' }} />
+        {/* Creative ambient glows (Optimized for performance) */}
+        <div className="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[80px]" />
+        <div className="absolute top-[40%] right-[0%] w-[40vw] h-[40vw] bg-accent/5 rounded-full blur-[80px]" />
+        <div className="absolute bottom-[0%] -left-[10%] w-[40vw] h-[40vw] bg-purple-900/10 rounded-full blur-[80px]" />
         
         {/* Subtle texture overlay for premium feel */}
-        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-overlay" />
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-overlay" />
       </div>
 
       <div className="relative z-10 overflow-x-hidden">

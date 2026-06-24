@@ -127,17 +127,20 @@ const BentoGrid = () => {
       }
     });
 
+    // O texto surge pequeno
     tl.fromTo(".bento-mask-text", 
-      { scale: 0.1, opacity: 0, y: 100 }, 
-      { scale: 1, opacity: 1, y: 0, duration: 0.2 }
+      { scale: 0.2, opacity: 0 }, 
+      { scale: 1, opacity: 1, duration: 0.2 }
     )
+    // Cresce massivamente
     .to(".bento-mask-text", {
       scale: 150,
       duration: 0.8,
       ease: "power2.in"
     })
-    .to(".bento-mask-overlay", {
-      opacity: 0,
+    // Ao terminar o zoom, a máscara se torna 100% branca (revelando toda a sessão)
+    .to(".mask-bg-rect", {
+      fill: "white",
       duration: 0.1
     });
   }, { scope: containerRef });
@@ -154,42 +157,57 @@ const BentoGrid = () => {
   ];
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden bg-[#02050A]">
+    <div ref={containerRef} className="relative w-full">
        
-       <div id="bento-content" className="relative z-0 min-h-screen flex flex-col justify-center py-32">
-          <div className="max-w-7xl mx-auto px-4 relative z-10 w-full">
-            <div className="mb-20 reveal-left">
-              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">A FUNDAÇÃO</h2>
-              <p className="text-gray-400 text-lg max-w-2xl">Uma abordagem profunda que integra 8 ciências essenciais para compreender a complexidade humana.</p>
-            </div>
+       {/* SVG Mask Definition */}
+       <svg width="0" height="0" className="absolute pointer-events-none">
+         <defs>
+           <mask id="text-mask">
+             <rect width="100%" height="100%" fill="black" className="mask-bg-rect" />
+             <text 
+               className="bento-mask-text font-black tracking-tighter"
+               x="50%" y="50vh" 
+               textAnchor="middle" 
+               dominantBaseline="middle" 
+               fill="white" 
+               style={{ fontSize: '15vw', transformOrigin: '50% 50vh' }}
+             >
+               CONSCIÊNCIA
+             </text>
+           </mask>
+         </defs>
+       </svg>
+
+       {/* Conteúdo Revelado (Fundo Branco) */}
+       <div 
+         className="w-full bg-white text-black"
+         style={{ 
+           WebkitMaskImage: 'url(#text-mask)', 
+           maskImage: 'url(#text-mask)'
+         }}
+       >
+         <div id="bento-content" className="relative z-0 min-h-screen flex flex-col justify-center py-32">
+            <div className="max-w-7xl mx-auto px-4 relative z-10 w-full mt-20">
+              <div className="mb-20 reveal-left">
+                <h2 className="text-4xl md:text-5xl font-black text-black tracking-tight mb-4">A FUNDAÇÃO</h2>
+                <p className="text-gray-600 text-lg max-w-2xl">Uma abordagem profunda que integra 8 ciências essenciais para compreender a complexidade humana.</p>
+              </div>
             <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] gap-4">
               {items.map((item, i) => (
                 <div 
                   key={i} 
-                  className={`reveal-up group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
+                  className={`reveal-up group relative rounded-3xl overflow-hidden bg-black/5 border border-black/10 p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
                 >
-                  <img src={item.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-[#0A1128]/60 to-transparent group-hover:from-black group-hover:via-black/40 transition-all duration-500"/>
-                  <img src={`https://www.fernandofreitascs.com.br/imagens/fundamentos/img/${item.img}`} alt={item.title} className="absolute top-6 right-6 w-16 h-16 object-contain opacity-70 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-500 drop-shadow-2xl filter brightness-0 invert z-10" />
-                  <h3 className="relative z-10 text-xl md:text-2xl font-bold text-white group-hover:text-accent transition-colors leading-tight drop-shadow-lg">{item.title}</h3>
+                  <img src={item.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-all duration-500"/>
+                  <img src={`https://www.fernandofreitascs.com.br/imagens/fundamentos/img/${item.img}`} alt={item.title} className="absolute top-6 right-6 w-16 h-16 object-contain opacity-90 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-500 drop-shadow-2xl filter brightness-0 invert z-10" />
+                  <h3 className="relative z-10 text-xl md:text-2xl font-bold text-white transition-colors leading-tight drop-shadow-lg">{item.title}</h3>
                 </div>
               ))}
             </div>
           </div>
        </div>
-
-       {/* The Masking Overlay */}
-       <div 
-         className="bento-mask-overlay absolute inset-0 z-50 flex items-center justify-center bg-black pointer-events-none"
-         style={{ mixBlendMode: 'multiply' }}
-       >
-          <h1 
-             className="bento-mask-text text-white font-black tracking-tighter whitespace-nowrap text-center"
-             style={{ fontSize: '15vw', transformOrigin: 'center center' }}
-          >
-             CONSCIÊNCIA
-          </h1>
-       </div>
+     </div>
     </div>
   );
 };

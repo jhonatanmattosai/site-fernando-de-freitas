@@ -151,7 +151,7 @@ const BentoGrid = () => {
   ];
 
   return (
-    <div ref={containerRef} className="relative w-full bg-white overflow-hidden">
+    <div ref={containerRef} className="relative w-full bg-white overflow-hidden rounded-b-[40px]">
        
        {/* Overlay em SVG (Perfeito recorte de buraco sem mix-blend-mode) */}
        <div className="absolute inset-0 z-50 pointer-events-none">

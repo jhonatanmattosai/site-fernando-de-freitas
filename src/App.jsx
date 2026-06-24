@@ -125,7 +125,7 @@ const BentoGrid = () => {
 
   useGSAP(() => {
     // Revelação dos blocos
-    gsap.utils.toArray('.reveal-up').forEach((elem) => {
+    gsap.utils.toArray('.bento-reveal-up').forEach((elem) => {
       gsap.fromTo(elem, 
         { y: 50, opacity: 0 },
         { 
@@ -136,12 +136,13 @@ const BentoGrid = () => {
           scrollTrigger: {
             trigger: elem,
             start: "top 85%",
+            pinnedContainer: containerRef.current
           }
         }
       );
     });
 
-    gsap.fromTo(".reveal-left",
+    gsap.fromTo(".bento-reveal-left",
         { x: -50, opacity: 0 },
         {
             x: 0,
@@ -149,8 +150,9 @@ const BentoGrid = () => {
             duration: 1,
             ease: "power3.out",
             scrollTrigger: {
-                trigger: ".reveal-left",
-                start: "top 80%"
+                trigger: ".bento-reveal-left",
+                start: "top 80%",
+                pinnedContainer: containerRef.current
             }
         }
     );
@@ -221,7 +223,7 @@ const BentoGrid = () => {
        {/* Conteúdo do Bento Grid (Fundo Branco) */}
        <div id="bento-content" className="relative z-0 min-h-screen flex flex-col justify-center py-32">
             <div className="max-w-7xl mx-auto px-4 relative z-10 w-full mt-20">
-              <div className="mb-20 reveal-left">
+              <div className="mb-20 bento-reveal-left">
                 <h2 className="text-4xl md:text-5xl font-black text-black tracking-tight mb-4">A FUNDAÇÃO</h2>
                 <p className="text-gray-600 text-lg max-w-2xl">Uma abordagem profunda que integra 8 ciências essenciais para compreender a complexidade humana.</p>
               </div>
@@ -231,7 +233,7 @@ const BentoGrid = () => {
                 return (
                 <div 
                   key={i} 
-                  className={`reveal-up group relative rounded-3xl overflow-hidden bg-black/5 border border-black/10 p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
+                  className={`bento-reveal-up group relative rounded-3xl overflow-hidden bg-black/5 border border-black/10 p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
                 >
                   <img src={item.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-all duration-500"/>

@@ -127,13 +127,13 @@ const BentoGrid = () => {
       }
     });
 
-    // O zoom do texto escalando o SVG inteiro
-    tl.fromTo(".bento-svg-overlay", 
+    // O zoom escalando a div wrapper que contém o SVG
+    tl.fromTo(".bento-svg-wrapper", 
       { scale: 1 },
-      { scale: 40, duration: 0.8, ease: "power2.in" }
+      { scale: 60, duration: 0.8, ease: "power2.in" }
     )
     // Faz o overlay desaparecer suavemente quando o texto já está gigante
-    .to(".bento-svg-overlay", {
+    .to(".bento-svg-wrapper", {
       opacity: 0,
       duration: 0.2
     }, "-=0.2");
@@ -156,27 +156,26 @@ const BentoGrid = () => {
        {/* Overlay em SVG (Perfeito recorte de buraco sem mix-blend-mode) */}
        <div className="absolute inset-0 z-50 pointer-events-none">
           <div className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
-             <svg 
-               className="bento-svg-overlay w-full h-full" 
-               style={{ transformOrigin: 'center center', willChange: 'transform' }}
-             >
-               <defs>
-                 <mask id="hole-mask">
-                   <rect width="100%" height="100%" fill="white" />
-                   <text 
-                     x="50%" y="50%" 
-                     textAnchor="middle" 
-                     dominantBaseline="middle" 
-                     fill="black" 
-                     className="font-black tracking-tighter"
-                     style={{ fontSize: '15vw' }}
-                   >
-                     CONSCIÊNCIA
-                   </text>
-                 </mask>
-               </defs>
-               <rect width="100%" height="100%" fill="#02050A" mask="url(#hole-mask)" />
-             </svg>
+             <div className="bento-svg-wrapper w-full h-full flex items-center justify-center" style={{ transformOrigin: 'center center', willChange: 'transform' }}>
+               <svg className="w-full h-full">
+                 <defs>
+                   <mask id="hole-mask">
+                     <rect width="100%" height="100%" fill="white" />
+                     <text 
+                       x="50%" y="50%" 
+                       textAnchor="middle" 
+                       dominantBaseline="middle" 
+                       fill="black" 
+                       className="font-black tracking-tighter"
+                       style={{ fontSize: '15vw' }}
+                     >
+                       CONSCIÊNCIA
+                     </text>
+                   </mask>
+                 </defs>
+                 <rect width="100%" height="100%" fill="#02050A" mask="url(#hole-mask)" />
+               </svg>
+             </div>
           </div>
        </div>
 

@@ -163,10 +163,7 @@ const HeroHeader = () => {
                                 href="/"
                                 aria-label="home"
                                 className="flex items-center space-x-2">
-                                <div className="text-white font-bold text-xl tracking-tighter flex items-center gap-2">
-                                    <span className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm">FF</span>
-                                    <span>Consciência Sistêmica</span>
-                                </div>
+                                <img src="https://www.fernandofreitascs.com.br/imagens/fernando-freitas-logo.png" alt="Fernando Freitas Consciência Sistêmica" className="h-8 md:h-12 object-contain" />
                             </a>
 
                             <button

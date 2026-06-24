@@ -115,14 +115,14 @@ const HeroModern = () => {
 
 const BentoGrid = () => {
   const items = [
-    { title: "Constelação Sistêmica", img: "ico-const.png", col: "col-span-1 md:col-span-2", row: "row-span-2" },
-    { title: "Psicossomática", img: "psicossomatica-icon.png", col: "col-span-1", row: "row-span-1" },
-    { title: "Neo Reichiana", img: "ico-psico.png", col: "col-span-1", row: "row-span-1" },
-    { title: "Medicina", img: "ico-medicina.png", col: "col-span-1 md:col-span-2", row: "row-span-1" },
-    { title: "Genética", img: "ico-genetica.png", col: "col-span-1", row: "row-span-1" },
-    { title: "Física Quântica", img: "ico-fisica.png", col: "col-span-1", row: "row-span-1" },
-    { title: "Neurociência", img: "ico-neuro.png", col: "col-span-1", row: "row-span-1" },
-    { title: "Coach", img: "ico-coach.png", col: "col-span-1 md:col-span-3", row: "row-span-1" }
+    { title: "Constelação Sistêmica", img: "ico-const.png", col: "col-span-1 md:col-span-2", row: "row-span-2", bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" },
+    { title: "Psicossomática", img: "psicossomatica-icon.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=80" },
+    { title: "Neo Reichiana", img: "ico-psico.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" },
+    { title: "Medicina", img: "ico-medicina.png", col: "col-span-1 md:col-span-2", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80" },
+    { title: "Genética", img: "ico-genetica.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80" },
+    { title: "Física Quântica", img: "ico-fisica.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" },
+    { title: "Neurociência", img: "ico-neuro.png", col: "col-span-1", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80" },
+    { title: "Coach", img: "ico-coach.png", col: "col-span-1 md:col-span-3", row: "row-span-1", bgImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" }
   ];
 
   return (
@@ -144,8 +144,9 @@ const BentoGrid = () => {
               key={i} 
               className={`group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md p-6 flex flex-col justify-end ${item.col} ${item.row} cursor-pointer`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
-              <img src={`https://www.fernandofreitascs.com.br/imagens/fundamentos/img/${item.img}`} alt={item.title} className="absolute top-6 right-6 w-16 h-16 object-contain opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 drop-shadow-2xl filter brightness-0 invert" />
+              <img src={item.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-700 mix-blend-screen" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#050A18]/80 to-[#0A1128]/80 group-hover:from-black/50 group-hover:to-black/80 transition-all duration-500"/>
+              <img src={`https://www.fernandofreitascs.com.br/imagens/fundamentos/img/${item.img}`} alt={item.title} className="absolute top-6 right-6 w-16 h-16 object-contain opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 drop-shadow-2xl filter brightness-0 invert z-10" />
               <h3 className="relative z-10 text-xl font-bold text-white group-hover:text-accent transition-colors leading-tight">{item.title}</h3>
             </motion.div>
           ))}
@@ -228,10 +229,10 @@ const CoursesCircular = () => {
 
 const SomosHumanosAccordion = () => {
     const embaixadores = [
-        { name: "Carla Queiroz", role: "Palestrante & Especialista", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80", bio: "Focada em relacionamentos e terapia familiar profunda." },
-        { name: "Dr Fernando de Freitas", role: "Criador do Método", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80", bio: "Médico e criador da metodologia Consciência Sistêmica." },
-        { name: "Luiza Freitas", role: "Embaixadora Jovem", img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80", bio: "Traz a visão contemporânea da abordagem sistêmica." },
-        { name: "Tiko Santos", role: "Treinador Master", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80", bio: "Especialista em dinâmicas corporais e análise neo-reichiana." }
+        { name: "Carla Queiroz", role: "Palestrante & Especialista", img: "https://www.fernandofreitascs.com.br/imagens/profissionais/carla-queiroz-22.jpg", bio: "Focada em relacionamentos e terapia familiar profunda." },
+        { name: "Dr Fernando de Freitas", role: "Criador do Método", img: "https://www.fernandofreitascs.com.br/imagens/profissionais/ffcsavatar.jpg", bio: "Médico e criador da metodologia Consciência Sistêmica." },
+        { name: "Luiza Freitas", role: "Embaixadora Jovem", img: "https://www.fernandofreitascs.com.br/imagens/profissionais/luiza-freitas.jpg", bio: "Traz a visão contemporânea da abordagem sistêmica." },
+        { name: "Tiko Santos", role: "Treinador Master", img: "https://www.fernandofreitascs.com.br/imagens/profissionais/tikosantos-nova.jpg", bio: "Especialista em dinâmicas corporais e análise neo-reichiana." }
     ];
 
     const [active, setActive] = useState(1); // Default to Fernando
@@ -413,8 +414,8 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0A1128] via-[#050A18] to-black font-sans selection:bg-accent selection:text-white">
       <HeroSection />
-      <BentoGrid />
       <CoursesCircular />
+      <BentoGrid />
       <SomosHumanosAccordion />
       <BlogCreative />
       <ModernFooter />

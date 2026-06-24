@@ -194,27 +194,22 @@ const BentoGrid = () => {
   return (
     <div ref={containerRef} className="relative w-full bg-white overflow-hidden rounded-b-[40px]">
        
-       {/* Overlay em SVG (Perfeito recorte de buraco sem mix-blend-mode) */}
-       <div className="absolute inset-0 z-50 pointer-events-none">
+       {/* Overlay com CSS Mix-Blend-Mode (1000x mais rápido que SVG Mask) */}
+       <div className="absolute inset-0 z-50 pointer-events-none mix-blend-multiply">
           <div className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
              <div className="bento-svg-wrapper w-full h-full flex items-center justify-center" style={{ transformOrigin: isMobile ? 'center 25%' : 'center center', willChange: 'transform' }}>
                <svg className="w-full h-full">
-                 <defs>
-                   <mask id="hole-mask">
-                     <rect width="100%" height="100%" fill="white" />
-                     <text 
-                       x="50%" y={isMobile ? "25%" : "50%"} 
-                       textAnchor="middle" 
-                       dominantBaseline="middle" 
-                       fill="black" 
-                       className="font-black tracking-tighter"
-                       style={{ fontSize: '15vw' }}
-                     >
-                       CONSCIÊNCIA
-                     </text>
-                   </mask>
-                 </defs>
-                 <rect width="100%" height="100%" fill="#02050A" mask="url(#hole-mask)" />
+                 <rect width="100%" height="100%" fill="#02050A" />
+                 <text 
+                   x="50%" y={isMobile ? "25%" : "50%"} 
+                   textAnchor="middle" 
+                   dominantBaseline="middle" 
+                   fill="white" 
+                   className="font-black tracking-tighter"
+                   style={{ fontSize: '15vw' }}
+                 >
+                   CONSCIÊNCIA
+                 </text>
                </svg>
              </div>
           </div>

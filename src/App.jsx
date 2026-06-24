@@ -129,14 +129,15 @@ const BentoGrid = () => {
 
     // O texto surge pequeno
     tl.fromTo(".bento-mask-text", 
-      { scale: 0.2, opacity: 0 }, 
+      { scale: 0.2, opacity: 0, transformOrigin: "50% 50%" }, 
       { scale: 1, opacity: 1, duration: 0.2 }
     )
     // Cresce massivamente
     .to(".bento-mask-text", {
       scale: 150,
       duration: 0.8,
-      ease: "power2.in"
+      ease: "power2.in",
+      transformOrigin: "50% 50%"
     })
     // Ao terminar o zoom, a máscara se torna 100% branca (revelando toda a sessão)
     .to(".mask-bg-rect", {
@@ -160,17 +161,17 @@ const BentoGrid = () => {
     <div ref={containerRef} className="relative w-full">
        
        {/* SVG Mask Definition */}
-       <svg width="0" height="0" className="absolute pointer-events-none">
+       <svg className="absolute top-0 left-0 w-full h-screen pointer-events-none z-[-1]">
          <defs>
-           <mask id="text-mask">
+           <mask id="text-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
              <rect width="100%" height="100%" fill="black" className="mask-bg-rect" />
              <text 
                className="bento-mask-text font-black tracking-tighter"
-               x="50%" y="50vh" 
+               x="50%" y="50%" 
                textAnchor="middle" 
                dominantBaseline="middle" 
                fill="white" 
-               style={{ fontSize: '15vw', transformOrigin: '50% 50vh' }}
+               style={{ fontSize: '15vw' }}
              >
                CONSCIÊNCIA
              </text>
@@ -490,7 +491,7 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-[#02050A] font-sans selection:bg-accent selection:text-white relative overflow-clip">
+    <div className="min-h-screen bg-[#02050A] font-sans selection:bg-accent selection:text-white relative">
       {/* GLOBAL FLUID BACKGROUND */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060D20] via-[#02050A] to-[#060D20]" />
@@ -504,7 +505,7 @@ export default function App() {
         <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-overlay" />
       </div>
 
-      <div className="relative z-10">
+      <div className="relative z-10 overflow-x-hidden">
         <HeroSection />
         <CoursesCircular />
         <BentoGrid />

@@ -310,7 +310,7 @@ const CoursesCircular = () => {
         </div>
 
         <div className="w-full h-full md:mt-32 relative">
-          <CircularGallery items={courses} radius={window.innerWidth < 768 ? 200 : 650} autoRotateSpeed={0.15} />
+          <CircularGallery items={courses} radius={650} autoRotateSpeed={0.15} />
         </div>
       </div>
     </div>

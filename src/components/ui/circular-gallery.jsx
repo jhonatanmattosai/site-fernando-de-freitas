@@ -128,7 +128,12 @@ const CircularGallery = React.forwardRef(
             const totalRotation = rotation % 360;
             const relativeAngle = (itemAngle + totalRotation + 360) % 360;
             const normalizedAngle = Math.abs(relativeAngle > 180 ? 360 - relativeAngle : relativeAngle);
-            const opacity = Math.max(0.3, 1 - (normalizedAngle / 180));
+            
+            // Lógica de "Uma imagem por vez" no mobile
+            const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+            const opacity = isMobile 
+              ? Math.max(0, 1 - (normalizedAngle / 30)) // Some logo após 30 graus
+              : Math.max(0.3, 1 - (normalizedAngle / 180));
 
             return (
               <div

@@ -263,15 +263,15 @@ const CoursesCircular = () => {
 
   return (
     <div className="w-full text-white overflow-hidden relative">
-      <div className="w-full relative h-[800px] md:h-[1000px] flex flex-col items-center justify-center overflow-hidden py-20">
+      <div className="w-full relative h-[500px] md:h-[1000px] flex flex-col items-center justify-center overflow-hidden py-10 md:py-20">
         
-        <div className="text-center absolute top-16 z-10 w-full px-4 pointer-events-none reveal-up">
+        <div className="text-center absolute top-8 md:top-16 z-10 w-full px-4 pointer-events-none reveal-up">
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">CATÁLOGO EXCLUSIVO</h2>
-          <p className="text-gray-400 text-lg max-w-xl mx-auto">Role a página ou aguarde a rotação 3D para explorar os cursos projetados para curar, ensinar e transformar realidades.</p>
+          <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto">Role a página ou aguarde a rotação 3D para explorar os cursos projetados para curar, ensinar e transformar realidades.</p>
         </div>
 
-        <div className="w-full h-full mt-32">
-          <CircularGallery items={courses} radius={650} autoRotateSpeed={0.15} />
+        <div className="w-full h-full mt-24 md:mt-32">
+          <CircularGallery items={courses} radius={window.innerWidth < 768 ? 300 : 650} autoRotateSpeed={0.15} />
         </div>
       </div>
     </div>

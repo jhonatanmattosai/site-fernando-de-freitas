@@ -126,7 +126,7 @@ const BentoGrid = () => {
   ];
 
   return (
-    <div className="py-32 bg-gradient-to-b from-[#0A1128] to-[#050A18] relative overflow-hidden">
+    <div className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="mb-20">
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">A FUNDAÇÃO</h2>
@@ -211,7 +211,7 @@ const CoursesCircular = () => {
   ];
 
   return (
-    <div className="w-full bg-[#050A18] text-white overflow-hidden relative">
+    <div className="w-full text-white overflow-hidden relative">
       <div className="w-full relative h-[800px] md:h-[1000px] flex flex-col items-center justify-center overflow-hidden py-20">
         
         <div className="text-center absolute top-16 z-10 w-full px-4 pointer-events-none">
@@ -238,7 +238,7 @@ const SomosHumanosAccordion = () => {
     const [active, setActive] = useState(1); // Default to Fernando
 
     return (
-        <div className="py-32 bg-gradient-to-b from-[#050A18] to-[#0A1128] relative">
+        <div className="py-32 relative">
             {/* Background texture */}
             <div className="absolute inset-0 opacity-5 bg-[url('https://www.fernandofreitascs.com.br/imagens/bg-teia.png')] bg-repeat" />
             
@@ -300,7 +300,7 @@ const BlogCreative = () => {
     ];
 
     return (
-        <div className="py-32 bg-gradient-to-b from-[#0A1128] to-[#050A18] relative">
+        <div className="py-32 relative">
              <div className="max-w-7xl mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                     <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">PENSAMENTOS <br/><span className="text-gray-600">&</span> REFLEXÕES</h2>
@@ -337,7 +337,7 @@ const BlogCreative = () => {
 
 const ModernFooter = () => {
     return (
-        <footer className="bg-[#050A18] text-white pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
+        <footer className="text-white pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
             {/* Glowing orb in footer */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
             
@@ -412,13 +412,28 @@ const ModernFooter = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0A1128] via-[#050A18] to-black font-sans selection:bg-accent selection:text-white">
-      <HeroSection />
-      <CoursesCircular />
-      <BentoGrid />
-      <SomosHumanosAccordion />
-      <BlogCreative />
-      <ModernFooter />
+    <div className="min-h-screen bg-[#02050A] font-sans selection:bg-accent selection:text-white relative overflow-hidden">
+      {/* GLOBAL FLUID BACKGROUND */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#060D20] via-[#02050A] to-[#060D20]" />
+        
+        {/* Creative ambient glows */}
+        <div className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute top-[40%] right-[0%] w-[40vw] h-[40vw] bg-accent/5 rounded-full blur-[150px] mix-blend-screen" />
+        <div className="absolute bottom-[0%] -left-[10%] w-[40vw] h-[40vw] bg-purple-900/10 rounded-full blur-[130px] mix-blend-screen animate-pulse" style={{ animationDuration: '12s' }} />
+        
+        {/* Subtle texture overlay for premium feel */}
+        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-overlay" />
+      </div>
+
+      <div className="relative z-10">
+        <HeroSection />
+        <CoursesCircular />
+        <BentoGrid />
+        <SomosHumanosAccordion />
+        <BlogCreative />
+        <ModernFooter />
+      </div>
     </div>
   );
 }

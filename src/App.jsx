@@ -500,7 +500,15 @@ export default function App() {
       <div className="relative z-10 overflow-x-hidden">
         <HeroSection />
         <CoursesCircular />
+        
+        {/* Soft edge transition TO BentoGrid */}
+        <div className="w-full h-48 bg-gradient-to-b from-transparent to-[#02050A] -mb-1 relative z-20 pointer-events-none" />
+        
         <BentoGrid />
+        
+        {/* Soft edge transition FROM BentoGrid */}
+        <div className="w-full h-48 bg-gradient-to-t from-transparent to-[#02050A] relative z-20 pointer-events-none" />
+
         <SomosHumanosAccordion />
         <BlogCreative />
         <ModernFooter />

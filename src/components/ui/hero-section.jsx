@@ -22,7 +22,17 @@ export function HeroSection() {
                             className="absolute inset-x-1 md:inset-x-4 lg:inset-x-8 top-0 bottom-4 overflow-hidden rounded-3xl border border-white/20 lg:rounded-[3rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] z-0"
                         >
                             <div className="absolute inset-0 bg-black/60 z-10" />
-                            <img
+                            <motion.img
+                                animate={{ 
+                                    scale: [1.05, 1.15, 1.05],
+                                    x: [0, 20, -20, 0],
+                                    y: [0, -15, 15, 0]
+                                }}
+                                transition={{ 
+                                    duration: 40, 
+                                    repeat: Infinity, 
+                                    ease: "linear" 
+                                }}
                                 className="size-full object-cover opacity-90"
                                 src="/hero-bg.png"
                                 alt="Consciência Sistêmica Background"

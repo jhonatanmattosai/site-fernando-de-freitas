@@ -228,10 +228,10 @@ const CoursesCircular = () => {
 
 const SomosHumanosAccordion = () => {
     const embaixadores = [
-        { name: "Carla Queiroz", role: "Palestrante & Especialista", img: "carla-queiroz.jpg", bio: "Focada em relacionamentos e terapia familiar profunda." },
-        { name: "Dr Fernando de Freitas", role: "Criador do Método", img: "fernando-de-freitas.jpg", bio: "Médico e criador da metodologia Consciência Sistêmica." },
-        { name: "Luiza Freitas", role: "Embaixadora Jovem", img: "luiza-freitas.jpg", bio: "Traz a visão contemporânea da abordagem sistêmica." },
-        { name: "Tiko Santos", role: "Treinador Master", img: "tikosantos-nova.jpg", bio: "Especialista em dinâmicas corporais e análise neo-reichiana." }
+        { name: "Carla Queiroz", role: "Palestrante & Especialista", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80", bio: "Focada em relacionamentos e terapia familiar profunda." },
+        { name: "Dr Fernando de Freitas", role: "Criador do Método", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80", bio: "Médico e criador da metodologia Consciência Sistêmica." },
+        { name: "Luiza Freitas", role: "Embaixadora Jovem", img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80", bio: "Traz a visão contemporânea da abordagem sistêmica." },
+        { name: "Tiko Santos", role: "Treinador Master", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80", bio: "Especialista em dinâmicas corporais e análise neo-reichiana." }
     ];
 
     const [active, setActive] = useState(1); // Default to Fernando
@@ -256,7 +256,7 @@ const SomosHumanosAccordion = () => {
                             onMouseEnter={() => setActive(idx)}
                             className={`relative h-full overflow-hidden cursor-pointer rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${active === idx ? 'md:flex-[4] flex-[2]' : 'md:flex-[1] flex-[0.5]'}`}
                         >
-                            <img src={`https://www.fernandofreitascs.com.br/imagens/profissionais/${person.img}`} alt={person.name} className="absolute inset-0 w-full h-full object-cover object-top" />
+                            <img src={person.img} alt={person.name} className="absolute inset-0 w-full h-full object-cover object-top" />
                             <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-opacity duration-500 ${active === idx ? 'opacity-80' : 'opacity-40'}`} />
                             
                             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col justify-end h-full">
